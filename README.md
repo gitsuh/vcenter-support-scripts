@@ -10,3 +10,5 @@ Using MSSQL Express database provided with vCenter Windows install supports only
 The following tables usually comprise the majority of the VIM_VCDB database:
 > dbo.VPX_EVENT
 > dbo.VPX_TASK
+
+After purging the database the vCenter retention policies should be adjusted to prevent storaging excessive amounts of events causing capacity problems.
