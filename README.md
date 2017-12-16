@@ -9,6 +9,44 @@ Using MSSQL Express database provided with vCenter Windows install supports only
 The following tables usually comprise the majority of the VIM_VCDB database:
 
  -  dbo.VPX_EVENT
- -  dbo.VPX_TASK
+ - dbo.VPX_TASK
 
 After purging the database the vCenter retention policies should be adjusted to prevent storaging excessive amounts of events causing capacity problems.
+
+
+
+The following lines must be edited if recent tasks, events, and stats should be retained:
+
+    -- ######### INPUT PARAMETERS ########################
+    -- Tasks older than @TaskMaxAgeInDays days will be deleted.
+    -- If @TaskMaxAgeInDays is 0 all tasks will be deleted
+    -- If @TaskMaxAgeInDays has negative value cleanup task step will be skipped
+    
+    -- Tasks older than @EventMaxAgeInDays days will be deleted.
+    -- If @EventMaxAgeInDays is 0 all tasks will be deleted
+    -- If @EventMaxAgeInDays has negative value cleanup task step will be skipped
+    
+    -- Tasks older than @StatMaxAgeInDays days will be deleted.
+    -- If @StatMaxAgeInDays is 0 all tasks will be deleted
+    -- If @StatMaxAgeInDays has negative value cleanup task step will be skipped
+
+  BEGIN TRY
+      SET @TaskMaxAgeInDays = **0**;
+  END TRY
+  BEGIN CATCH
+       SET @TaskMaxAgeInDays = -1;
+  END CATCH
+  
+  BEGIN TRY
+      SET @EventMaxAgeInDays = **0**;
+  END TRY
+  BEGIN CATCH
+       SET @EventMaxAgeInDays = -1;
+  END CATCH
+  
+  BEGIN TRY
+      SET @StatMaxAgeInDays = **0**;
+  END TRY
+  BEGIN CATCH
+       SET @StatMaxAgeInDays = -1;
+  END CATCH
