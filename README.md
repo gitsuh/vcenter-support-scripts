@@ -13,7 +13,7 @@ The following tables usually comprise the majority of the VIM_VCDB database:
 
 After purging the database the vCenter retention policies should be adjusted to prevent storaging excessive amounts of events causing capacity problems.
 
-
+VMware KB: [Selective deletion of tasks, events, and historical performance data in vSphere 5.x and 6.x](https://kb.vmware.com/kb/2110031) 
 
 The following lines must be edited if recent tasks, events, and stats should be retained:
 
