@@ -1,3 +1,7 @@
+-- This is modified version of VMware script which does not need any parameters which will delete ALL stats, tasks, and events.
+-- 2110031_MS_SQL_task_event_stat.sql
+-- https://kb.vmware.com/kb/2110031
+
 IF EXISTS (SELECT * FROM sysobjects WHERE ID = OBJECT_ID('event_full_cleanup_np') and OBJECTPROPERTY(id, 'IsProcedure') = 1)
    DROP PROCEDURE event_full_cleanup_np;
 go
